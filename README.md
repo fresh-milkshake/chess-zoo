@@ -1,27 +1,64 @@
-# Chess Zoo Web App
+# Веб-приложение "Шахматный Зоопарк"
 
-A web-based simulation of the "Chess Zoo" concept, where different types of chess pieces move around in their own enclosures, separated by walls. The app features:
+[![Deploy to GitHub Pages](https://github.com/fresh-milkshake/chess-zoo/actions/workflows/deploy.yml/badge.svg)](https://github.com/fresh-milkshake/chess-zoo/actions/workflows/deploy.yml)
 
-- Animated movement of chess pieces according to their rules
-- Walls and enclosures loaded from a custom PGN-like format
-- Interactive and visually appealing chessboard
+Веб-симуляция концепции "Шахматного Зоопарка", где различные шахматные фигуры перемещаются в своих вольерах, разделенных стенами, полностью вдохновленная комиксом [xkcd "Chess Zoo"](https://imgs.xkcd.com/comics/chess_zoo.png).
 
-## Setup
+Ссылка на приложение: https://github.com/fresh-milkshake/chess-zoo
 
-1. Install dependencies:
+
+Приложение включает:
+
+- Движение шахматных фигур в соответствии с правилами
+- Стены и вольеры, загружаемые из настраиваемого PGN-подобного формата
+- Интерактивная шахматная доска и инструменты для кастомизации зоопарка
+- Посетители, которые могут наблюдать за шахматными фигурами и делать комментарии о том, что они видят
+
+> Хоть README.md и на русском языке, но сам интерфейс приложения как и весь текст на английском.
+
+## Установка и запуск
+
+```bash
+npm install
+npm start
+```
+
+> Симуляция сама откроется в браузере по адресу:
+> http://localhost:3000
+
+## Публикация на GitHub Pages
+
+Репозиторий настроен для автоматической публикации на GitHub Pages:
+
+1. Внесите изменения в код
+2. Закоммитьте и отправьте изменения на GitHub:
    ```bash
-   npm install
+   git add .
+   git commit -m "Описание изменений"
+   git push
    ```
-2. Start the development server:
-   ```bash
-   npm start
-   ```
+3. GitHub Actions автоматически соберет и опубликует приложение на новую ветку `gh-pages`
+4. В настройках репозитория в разделе "Pages" надо выбрать эту ветку для работы на ней GitHub Pages
+5. После этого сайт будет доступен по адресу: https://username.github.io/chess-zoo/
 
-## Features
-- Load custom wall and piece positions from a PGN-like format
-- Smooth animation for piece movement
-- Visualization inspired by the "Chess Zoo" xkcd comic
+## Технические детали
 
-## Future Improvements
-- User controls for editing enclosures and piece positions
-- Exporting and sharing custom board setups 
+Приложение построено с использованием:
+
+- React для пользовательского интерфейса
+- Canvas API для отрисовки доски и фигур
+- Кастомных хуков для управления состоянием
+- Модульной структуры проекта для разделения логики
+
+### Основные компоненты
+
+- `ChessZooApp` - Корневой компонент приложения
+- `ChessZooBoard` - Компонент шахматной доски с Canvas
+- `ControlPanel` - Панель управления с инструментами
+- `useBoardInteractions` - Хук для обработки взаимодействия с доской
+- `useChessZooState` - Хук для управления состоянием приложения
+
+### Лицензия
+
+Этот проект распространяется под лицензией MIT. Смотрите файл [LICENSE](LICENSE) для получения дополнительной информации.
+

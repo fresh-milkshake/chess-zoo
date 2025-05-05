@@ -10,13 +10,12 @@ import { findPath } from './pathfinding'; // Import BFS pathfinder
  * @returns {import('./visitorTypes').Visitor}
  */
 export function createRandomVisitor(initialRow, initialCol) {
-    const randomColor = `hsl(${Math.random() * 360}, 70%, 70%)`; // Random pastel color
     const color = '#000000'; // Make all visitors black
-    const isChild = Math.random() < 0.25; // 25% chance of being a child
+    const isChild = Math.random() < 0.20;
 
     // Base sizes and randomness factors, adjusted for children
     const baseHead = isChild ? 0.12 : 0.15;
-    const randHead = isChild ? 0.06 : 0.02; // Reduced randomness for adults from 0.1 to 0.02
+    const randHead = isChild ? 0.06 : 0.02;
     const baseBody = isChild ? 0.3 : 0.4;
     const randBody = isChild ? 0.15 : 0.2;
     const baseLeg = isChild ? 0.2 : 0.3;
@@ -26,8 +25,8 @@ export function createRandomVisitor(initialRow, initialCol) {
 
     return {
         id: uuidv4(),
-        row: initialRow, // Use integer grid coords
-        col: initialCol, // Use integer grid coords
+        row: initialRow, 
+        col: initialCol, 
         state: VisitorState.IDLE,
         targetPieceId: null,
         movementTarget: null,
@@ -53,12 +52,12 @@ export function createRandomVisitor(initialRow, initialCol) {
  */
 function generateComment(pieceType) {
     const comments = {
-        'P': ["Look, a pawn!", "So many pawns.", "A humble pawn.", "Marching forward!"],
-        'N': ["A knight!", "Graceful jump!", "Cool horse piece!", "L-shape moves."],
-        'B': ["The bishop.", "Moving diagonally.", "Nice bishop!", "Looks pointy."],
-        'R': ["It's a rook!", "Straight lines only.", "Like a castle.", "Powerful rook!"],
-        'Q': ["The Queen!", "Wow, the Queen!", "Most powerful piece!", "Look at her go!"],
-        'K': ["The King!", "Protect the King!", "Regal looking.", "Slow and steady."]
+        'P': ["Look, a pawn!", "So many pawns.", "A humble pawn.", "Marching forward!", "One step at a time.", "The brave little pawn.", "Pawn power!", "The foundation piece."],
+        'N': ["A knight!", "Graceful jump!", "Cool horse piece!", "L-shape moves.", "Leaping over others!", "The tricky knight.", "What an interesting path!", "A noble steed."],
+        'B': ["The bishop.", "Moving diagonally.", "Nice bishop!", "Looks pointy.", "Sliding across colors.", "The strategic bishop.", "Long range striker.", "Diagonal master."],
+        'R': ["It's a rook!", "Straight lines only.", "Like a castle.", "Powerful rook!", "Standing tall!", "The mighty fortress.", "Guarding the ranks.", "Such straight moves!"],
+        'Q': ["The Queen!", "Wow, the Queen!", "Most powerful piece!", "Look at her go!", "So majestic!", "The mighty queen.", "Ruler of the board!", "What amazing moves!"],
+        'K': ["The King!", "Protect the King!", "Regal looking.", "Slow and steady.", "The royal piece!", "Most important piece.", "Lead your army!", "The noble king."]
     };
     const typeComments = comments[pieceType.toUpperCase()] || ["Interesting piece...", "What is that?", "Look!"];
     return typeComments[Math.floor(Math.random() * typeComments.length)];
@@ -291,7 +290,7 @@ export function updateVisitor(visitor, allPieces, walls, allVisitors) {
                     updatedVisitor.state = VisitorState.IDLE; // Re-evaluate target and path
                     updatedVisitor.targetPieceId = null;
                     updatedVisitor.stateTimer = now + 500 + Math.random() * 1000;
-                } else if (Math.random() < 0.2) { // 20% chance to comment 
+                } else if (Math.random() < 0.3) {
                     updatedVisitor.currentComment = generateComment(targetPieceObs.type);
                     updatedVisitor.commentTimer = now + COMMENT_DURATION;
                     updatedVisitor.state = VisitorState.COMMENTING;
