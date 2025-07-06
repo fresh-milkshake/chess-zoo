@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/chess-zoo/static/css/main.5867895a.css",
-    "main.js": "/chess-zoo/static/js/main.ea0d4b72.js",
+    "main.js": "/chess-zoo/static/js/main.b08975e9.js",
     "index.html": "/chess-zoo/index.html",
     "main.5867895a.css.map": "/chess-zoo/static/css/main.5867895a.css.map",
-    "main.ea0d4b72.js.map": "/chess-zoo/static/js/main.ea0d4b72.js.map"
+    "main.b08975e9.js.map": "/chess-zoo/static/js/main.b08975e9.js.map"
   },
   "entrypoints": [
     "static/css/main.5867895a.css",
-    "static/js/main.ea0d4b72.js"
+    "static/js/main.b08975e9.js"
   ]
 }
